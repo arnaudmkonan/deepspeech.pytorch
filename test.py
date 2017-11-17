@@ -85,7 +85,7 @@ if __name__ == '__main__':
         target_strings = target_decoder.convert_to_strings(split_targets)
         wer, cer = 0, 0
         for x in range(len(target_strings)):
-            transcript, reference = decoded_output[0][x], target_strings[x][0]
+            transcript, reference = decoded_output[x][0], target_strings[x][0]
             wer_inst = decoder.wer(transcript, reference) / float(len(reference.split()))
             cer_inst = decoder.cer(transcript, reference) / float(len(reference))
             wer += wer_inst

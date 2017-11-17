@@ -120,7 +120,8 @@ if __name__ == '__main__':
         print(json.dumps(results))
     else:
         decoded_output, decoded_offsets, confs, char_probs = decoder.decode(out.data)
-        for pi in range(args.top_paths):
-            print(decoded_output[pi][0])
-            if args.offsets:
-                print(decoded_offsets[pi][0])
+        for b in range(len(decoded_output)):
+            for pi in range(args.top_paths):
+                print(decoded_output[b][pi])
+                if args.offsets:
+                    print(decoded_offsets[b][pi])
